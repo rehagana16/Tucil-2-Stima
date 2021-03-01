@@ -1,6 +1,8 @@
 import re
 
 def OpenFile(filename) : 
+    foldername = "../test/"
+    filename = foldername+filename
     f = open(filename, "r")
     a = ""
     for x in f : 
@@ -91,4 +93,4 @@ def formatPrint(x,i) :
             else : 
                 print(str(x[i][j])+", ",end = "")
     
-x = OpenFile("contoh5.txt")
+x = OpenFile("contoh8.txt")
