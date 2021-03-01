@@ -1,12 +1,13 @@
 import re
 
+#fungsi main 
 def OpenFile(filename) : 
-    foldername = "../test/"
-    filename = foldername+filename
-    f = open(filename, "r")
-    a = ""
+    foldername = "../test/" 
+    filename = foldername+filename 
+    f = open(filename, "r") #membuka file pada directory "../test/<filename>"
+    a = "" 
     for x in f : 
-        a+=x
+        a+=x 
     a = cleanString(a)
     a = cleanArray(a)
     a = sortByLen(a)
@@ -21,6 +22,7 @@ def cleanString(x) :
         x[i] = re.split("[,|\s+|.]",x[i]) #asumsi format file selalu ada spasi setelah koma dan tidak ada spasi sebelum koma
     return x
 
+#setelah di clean string array masih mengandung elemen "" sehingga harus dihapus 
 def cleanArray(x) : 
     finalArray = []
     for i in range (len(x)) : 
@@ -31,6 +33,7 @@ def cleanArray(x) :
         finalArray.append(array)
     return finalArray
 
+#mengurutkan array berdasarkan panjang tiap elemen array 
 def sortByLen(x) : 
     for i in range(len(x)) : 
         for j in range(len(x) - 1) : 
@@ -40,7 +43,7 @@ def sortByLen(x) :
                 x[j+1] = temp 
     return x
 
-
+#mengecek apakah y ada di dalam array x, jika ada hapus y dari x
 def isIn(x,y) : 
     found = False 
     i = 0
@@ -52,7 +55,7 @@ def isIn(x,y) :
             else : 
                 i+=1
     return x 
-
+#fungsi topsort 
 def topSort(x,n) :
     sortedArray = [] 
     thisLevel = []
@@ -84,6 +87,7 @@ def topSort(x,n) :
     sortedArray.append(topSort(x,n+1))
     return sortedArray
 
+#format print agar sesuai dengan yang diminta pada spek 
 def formatPrint(x,i) :
     print("Semester " + str(i) + " : " , end="") 
     for i in range (len(x)) : 
@@ -93,4 +97,5 @@ def formatPrint(x,i) :
             else : 
                 print(str(x[i][j])+", ",end = "")
     
+#main program
 x = OpenFile("contoh8.txt")
